@@ -23,6 +23,18 @@ export default function DisconnectIntegration(props: {
       });
       if (!res.ok) {
         throw new Error("Something went wrong");
+      } else {
+        console.log("Deauthorize..");
+
+        const resDisconnect = await fetch("https://zoom.us/oauth/revoke", {
+          method: "POST",
+          body: JSON.stringify({ token: "f-xm1XU3T2OzMUYihV016w" }),
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: "TGRNdjFfQUhTeWlZdzVzSHZlNFp5Zzp5enVWSVNqdTYzTHlXSTRJNDVGNDlDZExVNmRjaE9JTQ==",
+          },
+        });
+        console.log("resDisconnect", resDisconnect);
       }
     },
     {
