@@ -24,17 +24,25 @@ export default function DisconnectIntegration(props: {
       if (!res.ok) {
         throw new Error("Something went wrong");
       } else {
-        console.log("Deauthorize..");
+        console.log("Deauthorize testing..");
 
-        const resDisconnect = await fetch("https://zoom.us/oauth/revoke", {
-          method: "POST",
-          body: JSON.stringify({ token: "eyJhbGciOiJIUzUxMiIsInYiOiIyLjAiLCJraWQiOiJlMGUwODQyMy05ZjYwLTRkYTYtYTcyMC0wM2FhNjU0MWRkMTEifQ.eyJ2ZXIiOjcsImF1aWQiOiI5ODZkYmM2YWI4Y2VjYzI3YTY1MDczNDlkYzJiNWYyNiIsImNvZGUiOiJGamM4cHM0dlZXX0lZT3VuanFQU0xPUVlnc3RORmhKcXciLCJpc3MiOiJ6bTpjaWQ6TGRNdjFfQUhTeWlZdzVzSHZlNFp5ZyIsImdubyI6MCwidHlwZSI6MSwidGlkIjowLCJhdWQiOiJodHRwczovL29hdXRoLnpvb20udXMiLCJ1aWQiOiJJWU91bmpxUFNMT1FZZ3N0TkZoSnF3IiwibmJmIjoxNjQ0MzMzNDM5LCJleHAiOjIxMTczNzM0MzksImlhdCI6MTY0NDMzMzQzOSwiYWlkIjoiX2l4MUJPcmdRZ1NBeUpvY3V2OGN5USIsImp0aSI6ImU2YWU1ODg3LTIxMjItNDc4MS1iNmU5LWU3NTVjMjQ1NzRiZSJ9.tnIEzKP5Ghf3DAZGM4N3bylKr1Dgb6xUGWiyQ7klSOl8R7zd2dzW9B4SSEx028UFJ_MJ2gpfLl0nrWaq-dSfFA" }),
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Basic TGRNdjFfQUhTeWlZdzVzSHZlNFp5Zzp5enVWSVNqdTYzTHlXSTRJNDVGNDlDZExVNmRjaE9JTQ==",
-          },
-        });
-        console.log("resDisconnect", resDisconnect);
+              var myHeaders = new Headers();
+              myHeaders.append("Authorization", "Basic TGRNdjFfQUhTeWlZdzVzSHZlNFp5Zzp5enVWSVNqdTYzTHlXSTRJNDVGNDlDZExVNmRjaE9JTQ==");
+              myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+              var urlencoded = new URLSearchParams();
+              urlencoded.append("token", "eyJhbGciOiJIUzUxMiIsInYiOiIyLjAiLCJraWQiOiJjNjMzYmVjOS0xYjI5LTQ2ZTQtYTYwOS1iMjkyZGRlNzYxOGYifQ.eyJ2ZXIiOjcsImF1aWQiOiI5ODZkYmM2YWI4Y2VjYzI3YTY1MDczNDlkYzJiNWYyNiIsImNvZGUiOiJ4bWVYdFc3dm1LX0lZT3VuanFQU0xPUVlnc3RORmhKcXciLCJpc3MiOiJ6bTpjaWQ6TGRNdjFfQUhTeWlZdzVzSHZlNFp5ZyIsImdubyI6MCwidHlwZSI6MCwidGlkIjowLCJhdWQiOiJodHRwczovL29hdXRoLnpvb20udXMiLCJ1aWQiOiJJWU91bmpxUFNMT1FZZ3N0TkZoSnF3IiwibmJmIjoxNjQ0MzM5NzkzLCJleHAiOjE2NDQzNDMzOTMsImlhdCI6MTY0NDMzOTc5MywiYWlkIjoiX2l4MUJPcmdRZ1NBeUpvY3V2OGN5USIsImp0aSI6ImUzNTgxMzFlLTBkNzUtNGU1NS04MjE0LWNlZTc3NTAyMWY0NSJ9.xHRcBmlaQ9AUBMJaYZGUpJr4cFKdmp89UDBbbdzH5nD6kea_bDrIIVxa2834vOVee8zrRGUonZ2IPaRYw-rLMw");
+
+              var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: urlencoded
+              };
+
+              fetch("https://zoom.us/oauth/revoke", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log('hahahahah',result))
+                .catch(error => console.log('error', error));
+        
       }
     },
     {
