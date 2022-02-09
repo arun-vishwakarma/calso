@@ -24,17 +24,25 @@ export default function DisconnectIntegration(props: {
       if (!res.ok) {
         throw new Error("Something went wrong");
       } else {
-        console.log("Deauthorize..");
+        console.log("Deauthorize testing..");
 
-        const resDisconnect = await fetch("https://zoom.us/oauth/revoke", {
-          method: "POST",
-          body: JSON.stringify({ token: "f-xm1XU3T2OzMUYihV016w" }),
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            Authorization: "TGRNdjFfQUhTeWlZdzVzSHZlNFp5Zzp5enVWSVNqdTYzTHlXSTRJNDVGNDlDZExVNmRjaE9JTQ==",
-          },
-        });
-        console.log("resDisconnect", resDisconnect);
+              var myHeaders = new Headers();
+              myHeaders.append("Authorization", "Basic TGRNdjFfQUhTeWlZdzVzSHZlNFp5Zzp5enVWSVNqdTYzTHlXSTRJNDVGNDlDZExVNmRjaE9JTQ==");
+              myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+              var urlencoded = new URLSearchParams();
+              urlencoded.append("token", "eyJhbGciOiJIUzUxMiIsInYiOiIyLjAiLCJraWQiOiJkMTA5OTgzZC00ZGNhLTQ3MWEtYWI2OS01ZTE3NDBiNzNkYmMifQ.eyJ2ZXIiOjcsImF1aWQiOiI5ODZkYmM2YWI4Y2VjYzI3YTY1MDczNDlkYzJiNWYyNiIsImNvZGUiOiJtWmtwUDhvMDJUX0lZT3VuanFQU0xPUVlnc3RORmhKcXciLCJpc3MiOiJ6bTpjaWQ6TGRNdjFfQUhTeWlZdzVzSHZlNFp5ZyIsImdubyI6MCwidHlwZSI6MCwidGlkIjowLCJhdWQiOiJodHRwczovL29hdXRoLnpvb20udXMiLCJ1aWQiOiJJWU91bmpxUFNMT1FZZ3N0TkZoSnF3IiwibmJmIjoxNjQ0MzQwMzY0LCJleHAiOjE2NDQzNDM5NjQsImlhdCI6MTY0NDM0MDM2NCwiYWlkIjoiX2l4MUJPcmdRZ1NBeUpvY3V2OGN5USIsImp0aSI6ImI4ZTY1YWQzLTRhNmQtNDcwZi1hMDM3LTU3YTYwMTg1NzgzOCJ9.UYGFXK1qnPSqvqIA4QT0aX0EIoQPnslyS298meWFA6hpCuzicsUgmzj2kcTyHyhda-QvTuY42tmHocg1iqNTwA");
+
+              var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: urlencoded
+              };
+
+              fetch("https://zoom.us/oauth/revoke", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log('hahahahah',result))
+                .catch(error => console.log('error', error));
+        
       }
     },
     {
