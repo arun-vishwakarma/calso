@@ -2,7 +2,6 @@
 
 # .env file
 .env
-/.env
 
 # dependencies
 /node_modules
