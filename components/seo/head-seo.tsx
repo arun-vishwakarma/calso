@@ -2,6 +2,7 @@ import merge from "lodash/merge";
 import { NextSeo, NextSeoProps } from "next-seo";
 import React from "react";
 
+import { SITE_NAME } from "@lib/config/constants";
 import { getSeoImage, seoConfig } from "@lib/config/next-seo.config";
 import { getBrowserInfo } from "@lib/core/browser/browser.utils";
 
@@ -89,7 +90,7 @@ export const HeadSeo: React.FC<HeadSeoProps & { children?: never }> = (props) =>
   } = props;
 
   const truncatedDescription = description.length > 24 ? description.substring(0, 23) + "..." : description;
-  const pageTitle = title + " | Cal.com";
+  const pageTitle = title + " | " + SITE_NAME;
   let seoObject = buildSeoMeta({
     title: pageTitle,
     image,

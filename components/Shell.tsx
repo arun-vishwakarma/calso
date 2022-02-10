@@ -22,6 +22,7 @@ import TrialBanner from "@ee/components/TrialBanner";
 import HelpMenuItemDynamic from "@ee/lib/intercom/HelpMenuItemDynamic";
 
 import classNames from "@lib/classNames";
+import { ROADMAP, JOIN_SLACK, SITE_NAME } from "@lib/config/constants";
 import { shouldShowOnboarding } from "@lib/getting-started";
 import { useLocale } from "@lib/hooks/useLocale";
 import { collectPageParameters, telemetryEventTypes, useTelemetry } from "@lib/telemetry";
@@ -400,7 +401,7 @@ function UserDropdown({ small }: { small?: boolean }) {
                   {user?.username || "Nameless User"}
                 </span>
                 <span className="block font-normal truncate text-neutral-500">
-                  {user?.username ? `cal.com/${user.username}` : "No public page"}
+                  {user?.username ? `${SITE_NAME.toLowerCase()}/${user.username}` : "No public page"}
                 </span>
               </span>
               <SelectorIcon
@@ -446,7 +447,7 @@ function UserDropdown({ small }: { small?: boolean }) {
         <DropdownMenuSeparator className="h-px bg-gray-200" />
         <DropdownMenuItem>
           <a
-            href="https://cal.com/slack"
+            href={JOIN_SLACK}
             target="_blank"
             rel="noreferrer"
             className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
@@ -479,7 +480,7 @@ function UserDropdown({ small }: { small?: boolean }) {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://cal.com/roadmap"
+            href={ROADMAP}
             className="flex items-center px-4 py-2 text-sm text-gray-700">
             <MapIcon className="w-5 h-5 text-gray-500 ltr:mr-3 rtl:ml-3" /> {t("visit_roadmap")}
           </a>

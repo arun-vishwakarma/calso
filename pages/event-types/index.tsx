@@ -15,6 +15,7 @@ import React, { Fragment, useEffect, useState } from "react";
 
 import { QueryCell } from "@lib/QueryCell";
 import classNames from "@lib/classNames";
+import { SITE_NAME } from "@lib/config/constants";
 import { useLocale } from "@lib/hooks/useLocale";
 import showToast from "@lib/notification";
 import { inferQueryOutput, trpc } from "@lib/trpc";
@@ -311,7 +312,7 @@ const EventTypesPage = () => {
   return (
     <div>
       <Head>
-        <title>Home | Cal.com</title>
+        <title>Home | {SITE_NAME}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Shell

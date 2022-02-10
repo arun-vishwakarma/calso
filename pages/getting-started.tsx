@@ -20,6 +20,7 @@ import * as z from "zod";
 import { asStringOrNull } from "@lib/asStringOrNull";
 import { getSession } from "@lib/auth";
 import { DEFAULT_SCHEDULE } from "@lib/availability";
+import { SITE_NAME, DOCS_URL } from "@lib/config/constants";
 import { useLocale } from "@lib/hooks/useLocale";
 import { getCalendarCredentials, getConnectedCalendars } from "@lib/integrations/calendar/CalendarManager";
 import getIntegrations from "@lib/integrations/getIntegrations";
@@ -269,7 +270,7 @@ export default function Onboarding(props: inferSSRProps<typeof getServerSideProp
   const steps = [
     {
       id: t("welcome"),
-      title: t("welcome_to_calcom"),
+      title: t("welcome_to_calcom").replace("Cal.com", SITE_NAME),
       description: t("welcome_instructions"),
       Component: (
         <>
@@ -289,8 +290,7 @@ export default function Onboarding(props: inferSSRProps<typeof getServerSideProp
                 {t("import_from")} {selectedImport === "calendly" ? "Calendly" : "SavvyCal"}
               </h2>
               <p className="mb-2 text-sm text-gray-500">
-                {t("you_will_need_to_generate")}. Find out how to do this{" "}
-                <a href="https://docs.cal.com/import">here</a>.
+                {t("you_will_need_to_generate")}. Find out how to do this <a href={DOCS_URL}>here</a>.
               </p>
               <form
                 className="flex"
@@ -557,7 +557,9 @@ export default function Onboarding(props: inferSSRProps<typeof getServerSideProp
   return (
     <div className="min-h-screen bg-brand" data-testid="onboarding">
       <Head>
-        <title>Cal.com - {t("getting_started")}</title>
+        <title>
+          {SITE_NAME} - {t("getting_started")}
+        </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
