@@ -4,7 +4,7 @@ export const IS_PRODUCTION = process.env.NODE_ENV === "production";
 export const TRIAL_LIMIT_DAYS = 14;
 export const LOGO = "/calendso-logo-white-word.svg";
 export const LOGO_ICON = "/cal-com-icon-white.svg";
-export const SITE_NAME = "Akv.com";
+export const SITE_NAME = "Akv1.com";
 export const ROADMAP = WEBSITE_URL + "/roadmap";
 export const JOIN_SLACK = WEBSITE_URL + "/slack";
 export const POWERED_BY_URL = WEBSITE_URL + "?utm_source=embed&utm_medium=powered-by-button";
